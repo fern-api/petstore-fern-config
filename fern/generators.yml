@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://schema.buildwithfern.dev/generators-yml.json
+api:
+  specs:
+    - openapi: openapi.yml
+
+auth-schemes:
+  Bearer:
+    scheme: bearer
+    token:
+      env: PETSTORE_TOKEN
+
+default-group: cli
+groups:
+  ts-sdk:
+    generators:
+      - name: fern-typescript-sdk
+        version: 3.71.3
+        smart-casing: true
+        output:
+          location: npm
+          package-name: "@fern-demo/petstore"
+        github:
+          repository: fern-demo/petstore-typescript-sdk
+          mode: push
+
+  cli:
+    generators:
+      - name: fern-cli
+        version: 0.5.0
+        smart-casing: true
+        github:
+          repository: fern-demo/petstore-cli
+          mode: push
