@@ -1,0 +1,30 @@
+name: Release TypeScript SDK
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      # a) API spec changes
+      - "fern/openapi.yml"
+      # b) Fern CLI version changes
+      - "fern/fern.config.json"
+      # c) Generator version changes
+      - "fern/generators.yml"
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Fern CLI
+        uses: fern-api/setup-fern-cli@v1
+
+      - name: Generate TypeScript SDK
+        env:
+          FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: fern generate --group ts-sdk --log-level debug
