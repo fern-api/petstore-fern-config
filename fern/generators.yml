@@ -22,7 +22,7 @@ groups:
           token: OIDC
         github:
           repository: fern-demo/petstore-typescript-sdk
-          mode: push
+          mode: release
 
   cli:
     generators:
