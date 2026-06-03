@@ -18,7 +18,7 @@ groups:
         smart-casing: true
         output:
           location: npm
-          package-name: "@fern-demo/petstore-sdk"
+          package-name: "@fern-api/example-typescript-sdk-petstore"
           token: OIDC
         github:
           repository: fern-demo/petstore-typescript-sdk
@@ -31,7 +31,7 @@ groups:
         smart-casing: true
         output:
           location: npm
-          package-name: "@fern-demo/petstore-cli"
+          package-name: "@fern-api/example-cli-petstore"
           token: OIDC
         github:
           repository: fern-demo/petstore-cli
