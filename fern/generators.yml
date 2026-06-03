@@ -19,6 +19,7 @@ groups:
         output:
           location: npm
           package-name: "@fern-demo/petstore-sdk"
+          token: OIDC
         github:
           repository: fern-demo/petstore-typescript-sdk
           mode: push
@@ -31,6 +32,7 @@ groups:
         output:
           location: npm
           package-name: "@fern-demo/petstore-cli"
+          token: OIDC
         github:
           repository: fern-demo/petstore-cli
           mode: push
