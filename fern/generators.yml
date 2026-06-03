@@ -35,4 +35,4 @@ groups:
           token: OIDC
         github:
           repository: fern-demo/petstore-cli
-          mode: push
+          mode: release
