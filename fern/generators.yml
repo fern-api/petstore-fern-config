@@ -26,8 +26,8 @@ groups:
 
   cli:
     generators:
-      - name: fern-cli
-        version: 0.6.0
+      - name: fern-cli-generator
+        version: 0.6.1
         smart-casing: true
         output:
           location: npm
