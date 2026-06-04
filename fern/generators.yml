@@ -44,9 +44,11 @@ groups:
         smart-casing: true
         output:
           location: crates
-          package-name: "@fern-api/example-rust-sdk-petstore"
+          package-name: petstore
         github:
           repository: fern-demo/petstore-rust-sdk
           mode: push
         config:
+          clientClassName: PetstoreClient
+          crateName: petstore
           enableWireTests: true
