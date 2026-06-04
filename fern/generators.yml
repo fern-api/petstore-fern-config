@@ -11,6 +11,19 @@ auth-schemes:
 
 default-group: cli
 groups:
+  cli:
+    generators:
+      - name: fern-cli-generator
+        version: 0.9.0
+        smart-casing: true
+        output:
+          location: npm
+          package-name: "@fern-api/example-cli-petstore"
+          token: OIDC
+        github:
+          repository: fern-demo/petstore-cli
+          mode: release
+
   ts-sdk:
     generators:
       - name: fern-typescript-sdk
@@ -24,15 +37,16 @@ groups:
           repository: fern-demo/petstore-typescript-sdk
           mode: release
 
-  cli:
+  rust-sdk:
     generators:
-      - name: fern-cli-generator
-        version: 0.9.0
+      - name: fern-rust-sdk
+        version: 0.38.0
         smart-casing: true
         output:
-          location: npm
-          package-name: "@fern-api/example-cli-petstore"
-          token: OIDC
+          location: crates
+          package-name: "@fern-api/example-rust-sdk-petstore"
         github:
-          repository: fern-demo/petstore-cli
+          repository: fern-demo/petstore-rust-sdk
           mode: release
+        config:
+          enableWireTests: true
