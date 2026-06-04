@@ -9,6 +9,9 @@ auth-schemes:
     token:
       env: PETSTORE_TOKEN
 
+readme:
+  apiName: PetStore
+
 default-group: cli
 groups:
   cli:
