@@ -47,6 +47,6 @@ groups:
           package-name: "@fern-api/example-rust-sdk-petstore"
         github:
           repository: fern-demo/petstore-rust-sdk
-          mode: release
+          mode: push
         config:
           enableWireTests: true
