@@ -1,0 +1,27 @@
+name: Release Python SDK
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "fern/openapi.yml"
+      - "fern/fern.config.json"
+      - "fern/generators.yml"
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Fern CLI
+        uses: fern-api/setup-fern-cli@v1
+
+      - name: Generate Python SDK
+        env:
+          FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        run: fern generate --group python-sdk --log-level debug --version AUTO

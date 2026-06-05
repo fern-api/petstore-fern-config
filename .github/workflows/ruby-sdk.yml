@@ -1,0 +1,27 @@
+name: Release Ruby SDK
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "fern/openapi.yml"
+      - "fern/fern.config.json"
+      - "fern/generators.yml"
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Fern CLI
+        uses: fern-api/setup-fern-cli@v1
+
+      - name: Generate Ruby SDK
+        env:
+          FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
+          RUBYGEMS_TOKEN: ${{ secrets.RUBYGEMS_TOKEN }}
+        run: fern generate --group ruby-sdk --log-level debug --version AUTO

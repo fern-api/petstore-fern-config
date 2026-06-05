@@ -1,0 +1,27 @@
+name: Release Java SDK
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "fern/openapi.yml"
+      - "fern/fern.config.json"
+      - "fern/generators.yml"
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Fern CLI
+        uses: fern-api/setup-fern-cli@v1
+
+      - name: Generate Java SDK
+        env:
+          FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
+          MAVEN_TOKEN: ${{ secrets.MAVEN_TOKEN }}
+        run: fern generate --group java-sdk --log-level debug --version AUTO
