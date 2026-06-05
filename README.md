@@ -23,15 +23,15 @@ fern/
 └── fern.config.json     # Fern project config (org + CLI version)
 
 .github/workflows/
-├── fern-check.yml       # Validates the spec on every PR
-├── ts-sdk.yml           # Generates + publishes the TypeScript SDK
-├── rust-sdk.yml         # Generates + publishes the Rust SDK
-├── cli.yml              # Generates + publishes the CLI
-├── python-sdk.yml       # Generates + publishes the Python SDK
-├── go-sdk.yml           # Generates + publishes the Go SDK
-├── java-sdk.yml         # Generates + publishes the Java SDK
-├── csharp-sdk.yml       # Generates + publishes the C# SDK
-└── ruby-sdk.yml         # Generates + publishes the Ruby SDK
+├── fern-check.yml            # Validates the spec on every PR
+├── ts-sdk.yml                # Generates + publishes the TypeScript SDK
+├── rust-sdk.yml              # Generates + publishes the Rust SDK
+├── cli.yml                   # Generates + publishes the CLI
+├── python-sdk.yml.example    # Template — rename to .yml when python-sdk is uncommented
+├── go-sdk.yml.example        # Template — rename to .yml when go-sdk is uncommented
+├── java-sdk.yml.example      # Template — rename to .yml when java-sdk is uncommented
+├── csharp-sdk.yml.example    # Template — rename to .yml when csharp-sdk is uncommented
+└── ruby-sdk.yml.example      # Template — rename to .yml when ruby-sdk is uncommented
 ```
 
 ## How it works
@@ -66,7 +66,8 @@ To enable a new SDK (for example, Python):
 2. **Update the placeholders** — Set your `package-name`, `repository`, and `client` class name.
 3. **Create the target GitHub repo** (e.g. `your-org/petstore-python-sdk`) and [install the Fern GitHub App](https://github.com/apps/fern-api) on it.
 4. **Add `FERN_TOKEN`** — In your config repo's Settings → Secrets, add your Fern token. This is the only secret required — Fern handles registry authentication via OIDC.
-5. **Push to `main`** — The matching workflow in `.github/workflows/python-sdk.yml` runs automatically.
+5. **Rename the workflow template** — Rename `.github/workflows/python-sdk.yml.example` to `python-sdk.yml` so GitHub Actions picks it up.
+6. **Push to `main`** — The workflow runs automatically.
 
 ## Use this as a template
 
