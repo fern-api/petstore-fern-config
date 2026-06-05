@@ -1,15 +1,12 @@
-name: Release CLI
+name: Release Java SDK
 
 on:
   push:
     branches:
       - main
     paths:
-      # a) API spec changes
       - "fern/openapi.yml"
-      # b) Fern CLI version changes
       - "fern/fern.config.json"
-      # c) Generator version changes
       - "fern/generators.yml"
   workflow_dispatch:
 
@@ -23,7 +20,7 @@ jobs:
       - name: Setup Fern CLI
         uses: fern-api/setup-fern-cli@v1
 
-      - name: Generate CLI
+      - name: Generate Java SDK
         env:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
-        run: fern generate --group cli --log-level debug --version AUTO
+        run: fern generate --group java-sdk --log-level debug --version AUTO

@@ -7,7 +7,6 @@ on:
     paths:
       # a) API spec changes
       - "fern/openapi.yml"
-      - "fern/openapi-overlay.yml"
       # b) Fern CLI version changes
       - "fern/fern.config.json"
       # c) Generator version changes
