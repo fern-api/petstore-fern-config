@@ -1,13 +1,6 @@
 name: Release Java SDK
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "fern/openapi.yml"
-      - "fern/fern.config.json"
-      - "fern/generators.yml"
   workflow_dispatch:
 
 jobs:
