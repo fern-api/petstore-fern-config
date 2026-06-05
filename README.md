@@ -104,7 +104,7 @@ fern generate --group ts-sdk --local
 ## Learn more
 
 - [Fern Docs — How SDKs work](https://buildwithfern.com/learn/sdks/overview/how-it-works)
-- [Fern Docs — generators.yml reference](https://buildwithfern.com/learn/sdks/overview/generators-yml)
+- [Fern Docs — generators.yml reference](https://buildwithfern.com/learn/sdks/reference/generators-yml)
 - [Fern Docs — Publishing to npm](https://buildwithfern.com/learn/sdks/generators/typescript/publishing)
 - [Fern Docs — Publishing to PyPI](https://buildwithfern.com/learn/sdks/generators/python/publishing)
 - [Fern Docs — Publishing as a Go module](https://buildwithfern.com/learn/sdks/generators/go/publishing)
