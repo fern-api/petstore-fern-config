@@ -1,6 +1,20 @@
 name: Release Python SDK
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "fern/openapi.yml"
+      - "fern/openapi-overlay.yml"
+      - "fern/fern.config.json"
+      - "fern/generators.yml"
+  pull_request:
+    paths:
+      - "fern/openapi.yml"
+      - "fern/openapi-overlay.yml"
+      - "fern/fern.config.json"
+      - "fern/generators.yml"
   workflow_dispatch:
 
 jobs:
@@ -40,6 +54,7 @@ jobs:
 
   release:
     needs: preview-and-validate
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
