@@ -33,7 +33,7 @@ groups:
   cli:
     generators:
       - name: fern-cli-generator
-        version: 0.9.0
+        version: 0.10.1
         smart-casing: true
         output:
           location: npm
@@ -46,7 +46,7 @@ groups:
   ts-sdk:
     generators:
       - name: fern-typescript-sdk
-        version: 3.71.3
+        version: 3.71.4
         smart-casing: true
         output:
           location: npm
@@ -59,7 +59,7 @@ groups:
   rust-sdk:
     generators:
       - name: fern-rust-sdk
-        version: 0.38.0
+        version: 0.39.0
         smart-casing: true
         output:
           location: crates
@@ -71,7 +71,6 @@ groups:
           clientClassName: PetstoreClient
           crateName: petstore
           enableWireTests: true
-
   # ──────────────────────────────────────────────────────────────
   # Uncomment any of the groups below to generate additional SDKs.
   # Then add a matching GitHub Actions workflow (see .github/workflows/).
