@@ -66,7 +66,20 @@ To enable a new SDK (for example, Python):
 2. **Update the placeholders** — Set your `package-name`, `repository`, and `client` class name.
 3. **Create the target GitHub repo** (e.g. `your-org/petstore-python-sdk`) and [install the Fern GitHub App](https://github.com/apps/fern-api) on it.
 4. **Add `FERN_TOKEN`** — In your config repo's Settings → Secrets, add your Fern token. This is the only secret required — Fern handles registry authentication via OIDC.
-5. **Rename the workflow template** — Rename `.github/workflows/python-sdk.yml.example` to `python-sdk.yml` so GitHub Actions picks it up.
+5. **Activate the workflow template** — Rename `.github/workflows/python-sdk.yml.example` to `python-sdk.yml` and add the push trigger so it runs on changes to `main`:
+   ```yaml
+   on:
+     push:
+       branches:
+         - main
+       paths:
+         - "fern/openapi.yml"
+         - "fern/openapi-overlay.yml"
+         - "fern/fern.config.json"
+         - "fern/generators.yml"
+     workflow_dispatch:
+   ```
+   See `ts-sdk.yml` for a complete example.
 6. **Push to `main`** — The workflow runs automatically.
 
 ## Use this as a template
