@@ -55,3 +55,74 @@ groups:
           clientClassName: PetstoreClient
           crateName: petstore
           enableWireTests: true
+
+  # ──────────────────────────────────────────────────────────────
+  # Uncomment any of the groups below to generate additional SDKs.
+  # Then add a matching GitHub Actions workflow (see .github/workflows/).
+  # ──────────────────────────────────────────────────────────────
+
+  # python-sdk:
+  #   generators:
+  #     - name: fernapi/fern-python-sdk
+  #       version: 5.14.8
+  #       output:
+  #         location: pypi
+  #         package-name: petstore-sdk
+  #       github:
+  #         repository: your-org/petstore-python-sdk
+  #         mode: release
+  #       config:
+  #         client:
+  #           class_name: PetstoreClient
+
+  # go-sdk:
+  #   generators:
+  #     - name: fernapi/fern-go-sdk
+  #       version: 1.43.0
+  #       github:
+  #         repository: your-org/petstore-go-sdk
+  #         mode: release
+  #       config:
+  #         packageName: petstore
+  #         module:
+  #           path: github.com/your-org/petstore-go-sdk
+  #         exportedClientName: PetstoreClient
+
+  # java-sdk:
+  #   generators:
+  #     - name: fernapi/fern-java-sdk
+  #       version: 4.8.0
+  #       output:
+  #         location: maven
+  #         coordinate: com.example:petstore-sdk
+  #       github:
+  #         repository: your-org/petstore-java-sdk
+  #         mode: release
+  #       config:
+  #         client-class-name: PetstoreClient
+
+  # csharp-sdk:
+  #   generators:
+  #     - name: fernapi/fern-csharp-sdk
+  #       version: 2.63.0
+  #       output:
+  #         location: nuget
+  #         package-name: Petstore.Sdk
+  #       github:
+  #         repository: your-org/petstore-csharp-sdk
+  #         mode: release
+  #       config:
+  #         client-class-name: PetstoreClient
+
+  # ruby-sdk:
+  #   generators:
+  #     - name: fernapi/fern-ruby-sdk
+  #       version: 1.12.1
+  #       output:
+  #         location: rubygems
+  #         package-name: petstore-sdk
+  #       github:
+  #         repository: your-org/petstore-ruby-sdk
+  #         mode: release
+  #       config:
+  #         clientModuleName: Petstore
