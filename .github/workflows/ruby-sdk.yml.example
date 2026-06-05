@@ -1,10 +1,54 @@
 name: Release Ruby SDK
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "fern/openapi.yml"
+      - "fern/openapi-overlay.yml"
+      - "fern/fern.config.json"
+      - "fern/generators.yml"
+  pull_request:
+    paths:
+      - "fern/openapi.yml"
+      - "fern/openapi-overlay.yml"
+      - "fern/fern.config.json"
+      - "fern/generators.yml"
   workflow_dispatch:
 
 jobs:
+  preview-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Fern CLI
+        uses: fern-api/setup-fern-cli@v1
+
+      - name: Generate preview
+        env:
+          FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
+        run: fern generate --group ruby-sdk --preview --output ./preview --log-level debug
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+
+      # Adapt the install/build/test commands to match your generated SDK's toolchain
+      - name: Install dependencies
+        working-directory: ./preview/fernapi-fern-ruby-sdk  # adjust to match generator name
+        run: bundle install
+
+      - name: Test
+        working-directory: ./preview/fernapi-fern-ruby-sdk
+        run: bundle exec rake
+
   release:
+    needs: preview-and-validate
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo

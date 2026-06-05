@@ -1,10 +1,55 @@
 name: Release Java SDK
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "fern/openapi.yml"
+      - "fern/openapi-overlay.yml"
+      - "fern/fern.config.json"
+      - "fern/generators.yml"
+  pull_request:
+    paths:
+      - "fern/openapi.yml"
+      - "fern/openapi-overlay.yml"
+      - "fern/fern.config.json"
+      - "fern/generators.yml"
   workflow_dispatch:
 
 jobs:
+  preview-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Fern CLI
+        uses: fern-api/setup-fern-cli@v1
+
+      - name: Generate preview
+        env:
+          FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
+        run: fern generate --group java-sdk --preview --output ./preview --log-level debug
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      # Adapt the build/test commands to match your generated SDK's toolchain
+      - name: Build
+        working-directory: ./preview/fernapi-fern-java-sdk  # adjust to match generator name
+        run: ./gradlew build
+
+      - name: Test
+        working-directory: ./preview/fernapi-fern-java-sdk
+        run: ./gradlew test
+
   release:
+    needs: preview-and-validate
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
