@@ -4,7 +4,36 @@ on:
   workflow_dispatch:
 
 jobs:
+  preview-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Fern CLI
+        uses: fern-api/setup-fern-cli@v1
+
+      - name: Generate preview
+        env:
+          FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
+        run: fern generate --group go-sdk --preview --output ./preview --log-level debug
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: ./preview/fernapi-fern-go-sdk/go.mod  # adjust to match generator name
+
+      # Adapt the build/test commands to match your generated SDK's toolchain
+      - name: Build
+        working-directory: ./preview/fernapi-fern-go-sdk
+        run: go build ./...
+
+      - name: Test
+        working-directory: ./preview/fernapi-fern-go-sdk
+        run: go test ./...
+
   release:
+    needs: preview-and-validate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo

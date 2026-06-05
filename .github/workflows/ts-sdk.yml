@@ -15,7 +15,40 @@ on:
   workflow_dispatch:
 
 jobs:
+  preview-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Fern CLI
+        uses: fern-api/setup-fern-cli@v1
+
+      - name: Generate preview
+        env:
+          FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
+        run: fern generate --group ts-sdk --preview --output ./preview --log-level debug
+
+      - name: Set up node
+        uses: actions/setup-node@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        working-directory: ./preview/fern-typescript-sdk
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        working-directory: ./preview/fern-typescript-sdk
+        run: pnpm build
+
+      - name: Test
+        working-directory: ./preview/fern-typescript-sdk
+        run: pnpm test
+
   release:
+    needs: preview-and-validate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo

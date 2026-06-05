@@ -38,8 +38,8 @@ fern/
 
 1. **Define your API** — Write or import an OpenAPI spec into `fern/openapi.yml`.
 2. **Configure generators** — In `fern/generators.yml`, declare which SDKs and CLIs to generate, where to publish them, and which GitHub repos receive the generated code.
-3. **Add a workflow** — Each generator group needs a GitHub Actions workflow that runs `fern generate --group <group-name>` on push to `main`. Workflow templates for every supported language are included in `.github/workflows/`.
-4. **Push to `main`** — GitHub Actions run `fern generate`, which sends the spec to Fern's cloud, generates idiomatic client code, publishes to package registries, and opens a release PR on each SDK repository.
+3. **Add a workflow** — Each generator group needs a GitHub Actions workflow. Workflow templates for every supported language are included in `.github/workflows/`.
+4. **Push to `main`** — GitHub Actions first run a **preview generation** (`fern generate --group <group-name> --preview`) and validate the output (build + test), then run the real `fern generate` to publish.
 
 > **Note:** Generation requires a `FERN_TOKEN` tied to your [Fern](https://buildwithfern.com) organization. The token authenticates with Fern's generation service and controls access to paid features like auto-publishing, pagination, retries, and OAuth support.
 
