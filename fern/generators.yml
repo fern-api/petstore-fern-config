@@ -68,7 +68,6 @@ groups:
   #       output:
   #         location: pypi
   #         package-name: petstore-sdk
-  #         token: ${PYPI_TOKEN}
   #       github:
   #         repository: your-org/petstore-python-sdk
   #         mode: release
@@ -96,7 +95,6 @@ groups:
   #       output:
   #         location: maven
   #         coordinate: com.example:petstore-sdk
-  #         token: ${MAVEN_TOKEN}
   #       github:
   #         repository: your-org/petstore-java-sdk
   #         mode: release
@@ -110,7 +108,6 @@ groups:
   #       output:
   #         location: nuget
   #         package-name: Petstore.Sdk
-  #         token: ${NUGET_TOKEN}
   #       github:
   #         repository: your-org/petstore-csharp-sdk
   #         mode: release
@@ -124,7 +121,6 @@ groups:
   #       output:
   #         location: rubygems
   #         package-name: petstore-sdk
-  #         token: ${RUBYGEMS_TOKEN}
   #       github:
   #         repository: your-org/petstore-ruby-sdk
   #         mode: release

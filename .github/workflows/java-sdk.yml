@@ -23,5 +23,4 @@ jobs:
       - name: Generate Java SDK
         env:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
-          MAVEN_TOKEN: ${{ secrets.MAVEN_TOKEN }}
         run: fern generate --group java-sdk --log-level debug --version AUTO

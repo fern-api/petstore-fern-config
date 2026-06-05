@@ -56,7 +56,6 @@ To enable a new SDK (for example, Python):
          output:
            location: pypi
            package-name: petstore-sdk
-           token: ${PYPI_TOKEN}
          github:
            repository: your-org/petstore-python-sdk
            mode: release
@@ -66,7 +65,7 @@ To enable a new SDK (for example, Python):
    ```
 2. **Update the placeholders** — Set your `package-name`, `repository`, and `client` class name.
 3. **Create the target GitHub repo** (e.g. `your-org/petstore-python-sdk`) and [install the Fern GitHub App](https://github.com/apps/fern-api) on it.
-4. **Add secrets** — In your config repo's Settings → Secrets, add `FERN_TOKEN` and any registry tokens (e.g. `PYPI_TOKEN`).
+4. **Add `FERN_TOKEN`** — In your config repo's Settings → Secrets, add your Fern token. This is the only secret required — Fern handles registry authentication via OIDC.
 5. **Push to `main`** — The matching workflow in `.github/workflows/python-sdk.yml` runs automatically.
 
 ## Use this as a template
@@ -79,7 +78,7 @@ To enable a new SDK (for example, Python):
    npm install -g fern-api
    fern token
    ```
-5. Add `FERN_TOKEN` (and registry tokens like `NPM_TOKEN`, `PYPI_TOKEN`) as GitHub Actions secrets.
+5. Add `FERN_TOKEN` as a GitHub Actions secret (Settings → Secrets → Actions). This is the only secret you need — Fern handles registry publishing via OIDC.
 6. Push to `main` — your SDKs are generated and published automatically.
 
 ## Local development

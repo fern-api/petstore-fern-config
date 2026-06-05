@@ -26,5 +26,4 @@ jobs:
       - name: Generate TypeScript SDK
         env:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: fern generate --group ts-sdk --log-level debug --version AUTO
