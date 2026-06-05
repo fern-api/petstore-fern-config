@@ -33,7 +33,7 @@ groups:
   cli:
     generators:
       - name: fern-cli-generator
-        version: 0.12.1
+        version: 0.13.0
         smart-casing: true
         output:
           location: npm
