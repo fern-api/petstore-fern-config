@@ -22,7 +22,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
-          bundler-cache: true
 
       # Adapt the install/build/test commands to match your generated SDK's toolchain
       - name: Install dependencies
