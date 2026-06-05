@@ -1,13 +1,29 @@
 # yaml-language-server: $schema=https://schema.buildwithfern.dev/generators-yml.json
 api:
+  auth:
+    any:
+      - Bearer
+      - OAuth
   specs:
     - openapi: openapi.yml
+      overlays: openapi-overlay.yml
 
 auth-schemes:
   Bearer:
     scheme: bearer
     token:
       env: PETSTORE_TOKEN
+  OAuth:
+    scheme: oauth
+    type: client-credentials
+    get-token:
+      endpoint: POST /auth/token
+      request-properties:
+        client-id: $request.client_id
+        client-secret: $request.client_secret
+      response-properties:
+        access-token: $response.access_token
+        expires-in: $response.expires_in
 
 readme:
   apiName: PetStore
