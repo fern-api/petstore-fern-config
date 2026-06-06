@@ -35,7 +35,7 @@ jobs:
       - name: Generate preview
         env:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
-        run: fern generate --group cli --preview --output ./preview --log-level debug
+        run: fern generate --group cli --preview --local --output ./preview --log-level debug
 
       - name: Set up Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
