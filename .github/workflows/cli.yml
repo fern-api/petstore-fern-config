@@ -53,7 +53,7 @@ jobs:
         run: cargo test
 
   release:
-    # needs: preview-and-validate  # temporarily skipped — .fernignore'd files need updating for 0.14.0
+    needs: preview-and-validate
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
