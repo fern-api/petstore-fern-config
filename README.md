@@ -8,9 +8,9 @@ Every push to `main` triggers GitHub Actions that call `fern generate` to produc
 
 | Output | Repository | Published to |
 |--------|-----------|-------------|
-| TypeScript SDK | [petstore-typescript-sdk](https://github.com/fern-demo/petstore-typescript-sdk) | npm (`@fern-api/example-typescript-sdk-petstore`) |
-| Rust SDK | [petstore-rust-sdk](https://github.com/fern-demo/petstore-rust-sdk) | crates.io (`petstore`) |
-| CLI | [petstore-cli](https://github.com/fern-demo/petstore-cli) | npm (`@fern-api/example-cli-petstore`) |
+| TypeScript SDK | [petstore-typescript-sdk](https://github.com/fern-api/petstore-typescript-sdk) | npm (`@fern-api/example-typescript-sdk-petstore`) |
+| Rust SDK | [petstore-rust-sdk](https://github.com/fern-api/petstore-rust-sdk) | crates.io (`petstore`) |
+| CLI | [petstore-cli](https://github.com/fern-api/petstore-cli) | npm (`@fern-api/example-cli-petstore`) |
 
 Additional generators for **Python**, **Go**, **Java**, **C#**, and **Ruby** are included in `generators.yml` as commented-out blocks — uncomment what you need.
 
