@@ -40,7 +40,7 @@ groups:
           package-name: "@fern-api/example-cli-petstore"
           token: OIDC
         github:
-          repository: fern-demo/petstore-cli
+          repository: fern-api/petstore-cli
           mode: release
 
   ts-sdk:
@@ -53,7 +53,7 @@ groups:
           package-name: "@fern-api/example-typescript-sdk-petstore"
           token: OIDC
         github:
-          repository: fern-demo/petstore-typescript-sdk
+          repository: fern-api/petstore-typescript-sdk
           mode: release
 
   rust-sdk:
@@ -65,7 +65,7 @@ groups:
           location: crates
           package-name: petstore
         github:
-          repository: fern-demo/petstore-rust-sdk
+          repository: fern-api/petstore-rust-sdk
           mode: push
         config:
           clientClassName: PetstoreClient
