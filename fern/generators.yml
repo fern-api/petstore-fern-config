@@ -50,7 +50,7 @@ groups:
         version: 0.14.1
         smart-casing: true
         output:
-          location: local
+          location: local-file-system
           path: ../sdks/petstore-cli
 
   ts-sdk:
