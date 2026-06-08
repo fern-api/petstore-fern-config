@@ -34,7 +34,7 @@ groups:
   cli:
     generators:
       - name: fern-cli-generator
-        version: 0.14.1
+        version: 0.14.3
         smart-casing: true
         output:
           location: npm
@@ -47,7 +47,7 @@ groups:
   local-cli:
     generators:
       - name: fern-cli-generator
-        version: 0.14.1
+        version: 0.14.3
         smart-casing: true
         output:
           location: local-file-system
