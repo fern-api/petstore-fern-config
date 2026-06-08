@@ -44,6 +44,15 @@ groups:
           repository: fern-api/petstore-cli
           mode: release
 
+  local-cli:
+    generators:
+      - name: fern-cli-generator
+        version: 0.14.1
+        smart-casing: true
+        output:
+          location: local
+          path: ../sdks/petstore-cli
+
   ts-sdk:
     generators:
       - name: fern-typescript-sdk
