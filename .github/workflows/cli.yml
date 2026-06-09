@@ -27,4 +27,4 @@ jobs:
       - name: Generate CLI
         env:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
-        run: fern generate --group cli --log-level debug
+        run: fern generate --group cli --log-level debug --version AUTO
