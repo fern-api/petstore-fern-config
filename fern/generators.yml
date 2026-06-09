@@ -34,7 +34,7 @@ groups:
   cli:
     generators:
       - name: fern-cli-generator
-        version: 0.14.3
+        version: 0.16.4
         smart-casing: true
         output:
           location: npm
@@ -47,7 +47,7 @@ groups:
   local-cli:
     generators:
       - name: fern-cli-generator
-        version: 0.14.3
+        version: 0.16.4
         smart-casing: true
         output:
           location: local-file-system
@@ -69,7 +69,7 @@ groups:
   rust-sdk:
     generators:
       - name: fern-rust-sdk
-        version: 0.40.0
+        version: 0.40.2
         smart-casing: true
         output:
           location: crates
