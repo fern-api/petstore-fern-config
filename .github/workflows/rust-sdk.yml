@@ -32,4 +32,5 @@ jobs:
       - name: Generate Rust SDK
         env:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
-        run: fern generate --group rust-sdk --log-level debug --version ${{ inputs.VERSION || 'AUTO' }}
+          VERSION: ${{ inputs.VERSION || 'AUTO' }}
+        run: fern generate --group rust-sdk --log-level debug --version "$VERSION"
