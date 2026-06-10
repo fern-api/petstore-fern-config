@@ -15,9 +15,9 @@ on:
   workflow_dispatch:
     inputs:
       VERSION:
-        description: 'Version to publish (defaults to AUTO)'
+        description: 'Version to publish (omit to use default behavior)'
         required: false
-        default: 'AUTO'
+        default: ''
 
 jobs:
   release:
@@ -32,5 +32,10 @@ jobs:
       - name: Generate CLI
         env:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
-          VERSION: ${{ inputs.VERSION || 'AUTO' }}
-        run: fern generate --group cli --log-level debug --version "$VERSION"
+          VERSION: ${{ inputs.VERSION }}
+        run: |
+          if [ -n "$VERSION" ]; then
+            fern generate --group cli --log-level debug --version "$VERSION"
+          else
+            fern generate --group cli --log-level debug
+          fi
