@@ -13,6 +13,11 @@ on:
       # c) Generator version changes
       - "fern/generators.yml"
   workflow_dispatch:
+    inputs:
+      VERSION:
+        description: 'Version to publish (omit to use default behavior)'
+        required: false
+        default: ''
 
 jobs:
   release:
@@ -27,4 +32,10 @@ jobs:
       - name: Generate CLI
         env:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
-        run: fern generate --group cli --log-level debug
+          VERSION: ${{ inputs.VERSION }}
+        run: |
+          if [ -n "$VERSION" ]; then
+            fern generate --group cli --log-level debug --version "$VERSION"
+          else
+            fern generate --group cli --log-level debug
+          fi
