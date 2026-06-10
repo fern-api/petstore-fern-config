@@ -13,6 +13,11 @@ on:
       # c) Generator version changes
       - "fern/generators.yml"
   workflow_dispatch:
+    inputs:
+      VERSION:
+        description: 'Version to publish (defaults to AUTO)'
+        required: false
+        default: 'AUTO'
 
 jobs:
   release:
@@ -27,4 +32,4 @@ jobs:
       - name: Generate TypeScript SDK
         env:
           FERN_TOKEN: ${{ secrets.FERN_TOKEN }}
-        run: fern generate --group ts-sdk --log-level debug --version AUTO
+        run: fern generate --group ts-sdk --log-level debug --version ${{ inputs.VERSION || 'AUTO' }}
